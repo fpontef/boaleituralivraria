@@ -1,6 +1,6 @@
 # Livraria Boa Leitura
 
-> Hospedado em: 
+> Hospedado em: https://boaleitura-livraria.herokuapp.com/
 
 ### Tecnologias utilizadas:
 
