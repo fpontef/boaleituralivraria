@@ -1,0 +1,21 @@
+<div th:replace="shared/header"></div>
+
+<main class="main">
+	<section class="content">
+		<div class="content__title">
+			<h3>Dados do Perfil</h3>
+		</div>
+		<ul>
+			<li th:text="'Id: ' + ${userDetails.id}"></li>
+			<li th:text="'Nome: ' + ${userDetails.name}"></li>
+			<li th:text="'Endereço: ' + ${userDetails.address}"></li>
+			<li th:text="'Cidade: ' + ${userDetails.city}"></li>
+		</ul>
+
+
+		<a  th:href="@{'/user/{id}/edit' (id=${userDetails.id})}"><button class="button button-large" type="submit">Editar Perfil</button></a>
+		</form>
+	</section>
+</main>
+
+<div th:replace="shared/footer"></div>

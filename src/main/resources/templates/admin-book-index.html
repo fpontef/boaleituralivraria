@@ -1,0 +1,45 @@
+<div th:replace="shared/header"></div>
+
+<main class="main">
+	<section class="content">
+		<div class="content__title">
+			<h3>Livro - Administrativo</h3>
+		</div>
+		<a th:href="@{/book/create}">Adicionar Item</a>
+		<table class="table">
+			<thead>
+				<tr class="table__header">
+					<th>id</th>
+					<th>Título</th>
+					<th>Autor</th>
+					<th>Estoque</th>
+					<th>Preço</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="book : ${bookList}">
+					<td th:text="${book.id}">1</td>
+					<td th:text="${book.title}">A Volta dos que não foram</td>
+					<td th:text="${book.author}">Regina Cazé</td>
+					<td th:text="${book.stock_qty}">10</td>
+					<td th:text="${book.price}">40</td>
+					
+					<td><a th:href="@{'/book/{id}/edit' (id=${book.id})}">Editar</a></td>
+					<td>
+					    <form th:action="@{'/book/{id}'(id=${book.id})}" th:method="delete">
+							<input type="hidden" name="_method" value="delete" />
+							<button type="submit" id="submitButton">Apagar</button>
+						</form>
+					</td>
+				
+				</tr>
+
+			</tbody>
+		</table>
+	</section>
+</main>
+
+<div th:replace="shared/footer"></div>

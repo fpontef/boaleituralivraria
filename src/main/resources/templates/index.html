@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="home">
+        <div class="home__title" th:unless="${#lists.isEmpty(bookList)}"><h2>Recém Chegados</h2></div>
+        <div class="home__content">
+
+          <div class="card" th:each="book: ${bookList}">
+            <a th:href="@{/book/} + ${book.id}">
+              <div class="card__top" th:text="${book.title}">A volta dos que não foram</div>
+              <img class="card__img" th:src="@{/images/livro_generico_1.jpg}" />
+            </a>
+            <div class="card__details">
+              <div class="card__details__title" th:text="${book.author}">Regina Casé</div>
+              <div class="card__details__text" th:text="${book.price}">R$ 10,50</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    
+<div th:replace="shared/footer"></div>
+
+</html>

@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"  href="../static/styles/styles.css" th:href="@{/styles/style.css}" />
+    <title>Boa Leitura Livraria</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__top">
+        <div class="header__top__logo">
+          <a class="logo" th:href="@{/}">
+	        <img class="logo" th:src="@{/images/livro.png}" alt="Boa Leitura" />
+	      </a>
+          <a th:href="@{/}">
+	        <h1>Boa Leitura</h1>
+          </a>
+        </div>
+        <form class="search" th:action="@{/book/search}" method="get">
+          <input class="search__bar" type="text" name="query"/>
+          <input class="search__button" type="submit" value="Buscar" />
+        </form>
+        <div class="login">
+          <div class="login__message" th:if="${session.user == null}" >Olá, Visitante!</div>
+          <div class="login__message" th:unless="${session.user == null}" th:text="${session.user}">Olá, Visitante!</div>
+	      <a th:href="@{/login}" th:if="${session.user == null}"><button class="login__button" type="button" >Login</button></a>
+    	  <a th:href="@{/logout}" th:unless="${session.user == null}"><button class="login__button" type="button" >Logout</button></a>
+        </div>
+      </div>
+      <!-- All Users -->
+      <nav >
+        <ul class="navbar">
+          <li class="navbar__item">
+            <a th:href="@{/book}">Todos os Livros</a>
+          </li>
+          <li class="navbar__item">
+            <a th:href="@{/user/create}" th:if="${session.user == null}">Crie sua conta</a>
+            <a th:href="@{/user/profile}" th:unless="${session.user == null}">Meu Perfil</a>
+          </li>
+          <li class="navbar__item">
+            <a th:href="@{/cart}"><strong>Carrinho</strong></a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Admin Only -->
+      <nav th:if="${session.userAdmin == 'true'}">
+        <ul class="navbar">
+          <div><strong>Admin:</strong></div>
+          <li class="navbar__item">
+           <a th:href="@{/book/admin}">Livros</a>
+          </li>
+          <li class="navbar__item">
+            <a th:href="@{/user/admin}">Usuários</a>
+          </li>
+          <li class="navbar__item">
+            <a th:href="@{/cart/admin}">Pedidos</a>
+          </li>
+        </ul>
+      </nav>
+    </header>

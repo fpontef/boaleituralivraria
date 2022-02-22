@@ -1,0 +1,37 @@
+<div th:replace="shared/header"></div>
+
+<main class="main">
+	<section class="content">
+		<div class="content__title">
+			<h3>Pedidos - Administrativo</h3>
+		</div>
+		
+		<table class="table">
+			<thead>
+				<tr class="table__header">
+					<th>id</th>
+					<th>User</th>
+					<th>CartItem</th>
+					<th>Pago</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="cart : ${cartList}">
+					<td th:text="${cart.id}">1</td>
+					<td th:text="${cart.user.getEmail}">Fulano</td>
+					<td>
+					  <ul th:each="cartItem: ${cart.getCartItems()}">
+					    <li th:text="${cartItem.getBook().getTitle()}"></li>
+					  </ul>
+					</td>
+					<td th:text="${cart.paid ? 'SIM' : 'NÃO'}">NÃO</td>
+					
+				</tr>
+
+			</tbody>
+		</table>
+	</section>
+</main>
+
+<div th:replace="shared/footer"></div>

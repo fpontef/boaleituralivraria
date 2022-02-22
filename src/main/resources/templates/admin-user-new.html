@@ -1,0 +1,24 @@
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="content">
+        <div class="content__title">
+          <h3>Adicionar Usuario</h3>
+        </div>
+        <form class="form" action="" method="post">
+          <label> Nome: <input type="text" name="name" /></label>
+          <label> Email: <input type="text" name="email" /></label>
+          <label> Senha: <input type="password" name="password" /></label>
+          <label> Endereço: <input type="text" name="address" /></label>
+          <label> Cidade: <input type="text" name="city" /></label>
+          <label>
+            Administrador:
+            <input type="checkbox" value="isadmin" name="isadmin"
+          /></label>
+          <button class="button button-large" type="submit">Enviar</button>
+        </form>
+      </section>
+    </main>
+    
+<div th:replace="shared/footer"></div>
+

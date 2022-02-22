@@ -1,0 +1,19 @@
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="content">
+        <div class="content__title">
+          <h3>Editar Livro</h3>
+        </div>
+        <form class="form" th:action="@{'/book/{id}'(id=${book.id})}" th:object="${book}" method="post">
+          <label> Id: <input type="text" th:field="*{id}" name="id" readOnly="readonly" disabled/></label>
+          <label> Titulo: <input type="text" th:field="*{title}" name="title"/></label>
+          <label> Autor: <input type="text" th:field="*{author}" name="author" /></label>
+          <label> Estoque: <input type="number" th:field="*{stock_qty}" name="stock_qty" /></label>
+          <label> Preço: <input type="number" th:field="*{price}" name="price" /></label>
+          <button class="button button-large" type="submit">Enviar</button>
+        </form>
+      </section>
+    </main>
+    
+<div th:replace="shared/footer"></div>

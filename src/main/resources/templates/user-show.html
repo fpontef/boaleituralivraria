@@ -1,0 +1,24 @@
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="content">
+        <div class="content__title">
+          <h3>Editar Usuário</h3>
+        </div>
+        <form class="form" th:action="@{'/user/{id}'(id=${user.id})}" th:object="${user}" method="post">
+          <label> Id: <input type="text" th:field="*{id}" name="id" readOnly="readonly" disabled/></label>
+          <label> Nome: <input type="text" th:field="*{name}" th:value="${name}" name="name"/></label>
+          <label> Email: <input type="text" th:field="*{email}" th:value="${email}" name="email" /></label>
+          <label> Senha: <input type="text" th:field="*{password}" th:value="${password}" name="password" /></label>
+          <label> Endereço: <input type="text" th:field="*{address}" th:value="${address}" name="address" /></label>
+          <label> Cidade: <input type="text" th:field="*{city}"th:value="${city}"  name="city" /></label>
+          <label>
+            Administrador:
+          	<input type="checkbox" value="admin" name="admin" />
+          </label>
+          <button class="button button-large" type="submit">Enviar</button>
+        </form>
+      </section>
+    </main>
+    
+<div th:replace="shared/footer"></div>

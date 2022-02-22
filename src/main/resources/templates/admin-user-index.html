@@ -1,0 +1,47 @@
+<div th:replace="shared/header"></div>
+
+<main class="main">
+	<section class="content">
+		<div class="content__title">
+			<h3>Usuário - Administrativo</h3>
+		</div>
+		<a th:href="@{/user/create}">Adicionar Item</a>
+		<table class="table">
+			<thead>
+				<tr class="table__header">
+					<th>id</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Endereço</th>
+					<th>Cidade</th>
+					<th>Admin</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="user : ${userList}">
+					<td th:text="${user.id}">1</td>
+					<td th:text="${user.name}">Fulano de Tal</td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.address}"></td>
+					<td th:text="${user.city}"></td>
+					<td th:text="${user.admin ? 'SIM' : 'NÃO'}"></td>
+					
+					<td><a th:href="@{'/user/{id}/edit' (id=${user.id})}">Editar</a></td>
+					<td>
+					    <form th:action="@{'/user/admin/{id}'(id=${user.id})}" th:method="delete">
+							<input type="hidden" name="_method" value="delete" />
+							<button type="submit" id="submitButton">Apagar</button>
+						</form>
+					</td>
+				
+				</tr>
+
+			</tbody>
+		</table>
+	</section>
+</main>
+
+<div th:replace="shared/footer"></div>

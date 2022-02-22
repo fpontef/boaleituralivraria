@@ -1,0 +1,44 @@
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="cart">
+        <div class="cart__title"><h2>Meu Carrinho</h2></div>
+        <div class="cart__content" th:if="${cartItemList!=null and !cartItemList.empty}" >
+          <div class="cart__items">
+            <ul class="cart__items--item" th:if="${cartItemList!=null and !cartItemList.empty}" th:each="cartItem : ${cartItemList}">
+              <li><strong th:if="${cartItem.getBook() != null}" th:text="${cartItem.getBook().getTitle()}">A volta dos que não foram</strong></li>
+              <li th:value="${cartItem.quantity}">
+                <!--
+                <label>
+                  Quantidade:
+                  <input
+                    class="input--qty"
+                    type="number"
+                    min="1"
+                    max="50"
+                    value="1"
+                    th:value="${cartItem.quantity}"
+                  />
+                </label>
+                 -->
+              </li>
+              <li th:text="${cartItem.price}">R$ 10,00</li>
+              <li>
+              	<form th:action="@{'/cart/{cartId}/cartItem/{cartItemId}'(cartId=${cartItem.getCart().getId()}, cartItemId=${cartItem.id})}" th:method="delete">
+					<input type="hidden" name="_method" value="delete" />
+					<button class="button button-medium" type="submit" id="submitButton">Excluir</button>
+				</form>
+			  </li>
+            </ul>
+            
+          </div>
+          <div class="cart__content__business">
+            <div th:text="'Total R$ ' + ${cartTotal}">Total: R$ 500,00</div>
+            <a th:href="@{/cart/finish}"><button class="button button-large">Finalizar Compra</button></a>
+          </div>
+        </div>
+        <h1 th:if="${cartItemList == null}" th:text="${error}"></h1>
+      </section>
+    </main>
+
+<div th:replace="shared/footer"></div>

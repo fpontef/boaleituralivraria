@@ -1,0 +1,32 @@
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="content">
+        <div class="content__title">
+          <h3>Faça seu Login</h3>
+        </div>
+        <!-- <form class="form" th:action="@{/login}" th:object="${loginData}" method="post"> -->
+        <form class="form" th:action="@{/login}" method="post">
+          <label> Email: <input type="text" name="email" /></label>
+          <label> Senha: <input type="password" name="password" /></label>
+	        <div th:if="${error != null}">
+		        <div class="alert alert-danger" th:text="${error}">Usuário ou Senha incorretos</div>
+	        </div>
+          
+          <button class="button button-large" type="submit">Enviar</button>
+        </form>
+        
+	        <div th:if="${param.error}">
+				<div class="alert alert-danger">Invalid username or password.</div>
+			</div>
+        <!--
+        <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>
+		-->
+      </section>
+    </main>
+
+<div th:replace="shared/footer"></div>

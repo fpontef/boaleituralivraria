@@ -1,0 +1,37 @@
+
+<div th:replace="shared/header"></div>
+
+    <main class="main">
+      <section class="section">
+        <div class="section__title" th:text="${bookDetails.title}">Aaa Volta dos que não foram</div>
+        <div class="section__title" th:text="${bookDetails.author}">Eça de Queiroz</div>
+        <div class="section__details">
+          <div class="section__details__img">
+            <img th:src="@{/images/livro_generico_1.jpg}" />
+          </div>
+          <div class="section__details__business">
+            <div class="section__title" style="padding-bottom: 0.5rem;" th:text="${'R$ ' + bookDetails.price}">R$ 10.00</div>
+            
+            <form th:action="@{/cart/add}" th:method="post" th:object="${book}" >
+                 <input type="hidden" name="bookId" th:value="${bookDetails.id}" />
+	             <label style="padding-bottom: 1rem;">
+	              Quantidade:
+	              <input
+	                id="bookQty"
+	                name="bookQty"
+	                class="input--qty"
+	                type="number"
+	                min="1"
+	                max="50"
+	                value="1"
+	              />
+	            </label>
+				<button class="button button-large">Adicionar ao Carrinho</button>
+			</form>
+			
+          </div>
+        </div>
+      </section>
+    </main>
+    
+<div th:replace="shared/footer"></div>
