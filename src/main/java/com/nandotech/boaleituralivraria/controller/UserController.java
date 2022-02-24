@@ -41,7 +41,7 @@ public class UserController {
 	@GetMapping("/admin/create")
 	public String createAdmin(User user) {
 
-		return "user-register";
+		return "admin-user-new";
 	}
 
 	/* Página do Form */

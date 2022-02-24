@@ -467,6 +467,12 @@ ul {
   .section__details {
     flex-direction: column;
   }
+  
+  .form label {
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: auto auto;
+  }
 
   .footer {
     flex-wrap: wrap;

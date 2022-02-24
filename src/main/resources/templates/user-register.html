@@ -3,18 +3,21 @@
     <main class="main">
       <section class="content">
         <div class="content__title">
-          <h3>Adicionar Usuario</h3>
+          <h3>Adicionar Usuário</h3>
         </div>
-        <form class="form" action="" method="post">
-          <label> Nome: <input type="text" name="name" /></label>
-          <label> Email: <input type="text" name="email" /></label>
-          <label> Senha: <input type="password" name="password" /></label>
-          <label> Endereço: <input type="text" name="address" /></label>
-          <label> Cidade: <input type="text" name="city" /></label>
+        <form class="form" th:action="@{/user}" th:object="${user}" method="post">
+          <label> Nome: <input type="text" th:field="*{name}" name="name"/></label>
+          <label> Email: <input type="text" th:field="*{email}" name="email" /></label>
+          <label> Senha: <input type="text" th:field="*{password}" name="password" /></label>
+          <label> Endereço: <input type="text" th:field="*{address}" name="address" /></label>
+          <label> Cidade: <input type="text" th:field="*{city}" name="city" /></label>
+          <label th:if="${session.userAdmin == 'true'}">
+            Administrador:
+          	<input type="checkbox" name="admin" th:field="*{admin}"/>
+          </label>
           <button class="button button-large" type="submit">Enviar</button>
         </form>
       </section>
     </main>
     
 <div th:replace="shared/footer"></div>
-
