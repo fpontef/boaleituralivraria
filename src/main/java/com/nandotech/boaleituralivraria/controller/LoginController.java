@@ -28,7 +28,7 @@ public class LoginController {
 	@PostMapping("/login")
 	public String login(Model model, User loginData, HttpServletResponse response, HttpSession session) {
 
-		User user = userRepository.findByEmailAndPasswordContaining(loginData.getEmail(), loginData.getPassword());
+		User user = userRepository.findByEmailAndPassword(loginData.getEmail(), loginData.getPassword());
 
 		if (user == null) {
 			model.addAttribute("error", "Usuário ou senha inválidos");
